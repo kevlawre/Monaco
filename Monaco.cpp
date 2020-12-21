@@ -10,9 +10,9 @@
 #include <iostream>
 #include <limits> //DBL_MAX; 
 #include <iomanip>
-#include "PCA.h"
-#include "../lib/error_logs.h"
-#include "Monaco.h"
+#include "PCA.hpp"
+#include "../lib/error_logs.hpp"
+#include "Monaco.hpp"
 #include "../lib/statistics.hpp"
 
 using namespace std; 

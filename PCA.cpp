@@ -8,9 +8,9 @@
 #include <numeric>
 #include <iostream>
 #include <iomanip>
-#include "PCA.h"
-#include "../lib/error_logs.h"
-#include "Monaco.h"
+#include "PCA.hpp"
+#include "../lib/error_logs.hpp"
+#include "Monaco.hpp"
 #include "../lib/statistics.hpp"
 
 using namespace std; 
@@ -32,7 +32,7 @@ void init_identity(jacobi_transform &jf){
 
 void load_components(jacobi_transform jf, vector<eigen_unit> &e_units){
     int order = jf.eigenvectors.size(); //Order of eigenvector matrix
-    for(unsigned int i = 0; i < order; i++){
+    for(int i = 0; i < order; i++){
         eigen_unit ev(jf.eigenvectors[i], jf.eigenvalues[i]); //Zip Eigenvalue and Eigenvector
         e_units.push_back(ev); //accumulate zipped unit in reference vector
     } 
@@ -151,7 +151,6 @@ jacobi_transform eigenvalue_calc(vector<vector<double> > c, int MAX_ITERATIONS){
 component_data PCA(vector<vector<double> > Features){
     int max_it = Features.size()*Features[0].size(); 
     jacobi_transform jf = eigenvalue_calc(Features, max_it); 
-    int order = jf.covariance_matrix[0].size();
     vector<eigen_unit> components; 
     load_components(jf, components); 
     EigenData_Dump(jf, 1);
